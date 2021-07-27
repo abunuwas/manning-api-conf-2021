@@ -7,7 +7,7 @@ before_install:
 before_script:
 - uvicorn todo.server:server &
 script:
-- dredd oas.yaml http://127.0.0.1:8000 --hookfiles=./hooks.py --language=python --server
+- dredd oas.yaml http://127.0.0.1:8000 --hookfiles=./hooks.py --language=python
 - schemathesis run oas.yaml --base-url=http://localhost:8000 --stateful=links
 deploy:
   provider: heroku
