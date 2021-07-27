@@ -5,7 +5,7 @@ before_install:
 - npm install dredd@14.0.0 --global
 - pipenv install --dev
 before_script:
-- uvicorn todo.server:server
+- uvicorn todo.server:server &
 script:
 - dredd oas.yaml http://127.0.0.1:8000 --hookfiles=./hooks.py --language=python --server
 - schemathesis run oas.yaml --base-url=http://localhost:8000 --stateful=links
